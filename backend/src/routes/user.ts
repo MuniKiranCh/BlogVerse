@@ -18,11 +18,11 @@ userRouter.post('/signup', async (c) => {
   
     const body = await c.req.json();
 
-    const {success} = signupInput.safeParse(body);
-    if (!success) {
-        c.status(400);
-        return c.json({ error: "Invalid Input" });
-    }
+    // const {success} = signupInput.safeParse(body);
+    // if (!success) {
+    //     c.status(400);
+    //     return c.json({ error: "Invalid Input" });
+    // }
 
     const saltRounds=10;
     const hashedPassword = await hash(body.password, saltRounds);
