@@ -3,6 +3,7 @@ import { PrismaClient } from "@prisma/client/edge";
 import { withAccelerate } from "@prisma/extension-accelerate";
 import { Hono } from "hono";
 import { sign } from "hono/jwt";
+import { cors } from 'hono/cors';
 
 export const userRouter = new Hono<{
     Bindings: {
@@ -10,6 +11,12 @@ export const userRouter = new Hono<{
         JWT_SECRET: string;
     }
 }>();
+
+userRouter.use('*', cors({
+    origin: 'http://localhost:5173', // Allow requests from your frontend
+    allowMethods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed HTTP methods
+    allowHeaders: ['Content-Type'], // Specify allowed headers
+  }));
 
 userRouter.post('/signup', async (c) => {
     const prisma = new PrismaClient({
@@ -29,6 +36,7 @@ userRouter.post('/signup', async (c) => {
   
     const user = await prisma.user.create({
       data: {
+        name: body.username,
         email: body.email,
         password: hashedPassword,
       },

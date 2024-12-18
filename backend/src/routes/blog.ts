@@ -2,6 +2,7 @@ import { PrismaClient } from "@prisma/client/edge";
 import { withAccelerate } from "@prisma/extension-accelerate";
 import { Hono } from "hono";
 import { verify } from "hono/jwt";
+import { cors } from 'hono/cors';
 
 export const bookRouter = new Hono<{
     Bindings: {
@@ -12,6 +13,12 @@ export const bookRouter = new Hono<{
         userId: string
     }
 }>();
+
+bookRouter.use('*', cors({
+	origin: 'http://localhost:5173', // Allow requests from your frontend
+	allowMethods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed HTTP methods
+	allowHeaders: ['Content-Type'], // Specify allowed headers
+  }));
 
 bookRouter.use(async (c, next) => {
     const jwt = c.req.header('Authorization');
