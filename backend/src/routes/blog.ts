@@ -23,7 +23,7 @@ const createPrismaClient = (datasourceUrl: string) =>
 blogRouter.use('*', cors({
     origin: 'http://localhost:5173', // Allow requests from your frontend
     allowMethods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed HTTP methods
-    allowHeaders: ['Content-Type'], // Specify allowed headers
+    allowHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
 }));
 
 // Middleware for Authentication
