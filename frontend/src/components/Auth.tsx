@@ -3,13 +3,15 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { BACKEND_URL } from '../config';
+import { SignupInput } from "@syedahmedullahjaser/zod-inference-medium-blog"
+
 
 export const Auth = ({type}: {type: "signup" | "signin"}) => {
   const navigate = useNavigate();
 
-  const [formData, setFormData] = useState(
+  const [formData, setFormData] = useState<SignupInput>(
         type === "signup"
-      ? { username: '', email: '', password: '' }
+      ? { name: '', email: '', password: '' }
       : { email: '', password: '' }
   );
 
@@ -25,15 +27,15 @@ export const Auth = ({type}: {type: "signup" | "signin"}) => {
     try{
         const response = await axios.post(`${BACKEND_URL}/api/v1/user/${type=== "signup" ? "signup" : "signin"}`, formData);
         const data = response.data;
-        console.log(data);
+        // console.log(data);
 
-        localStorage.setItem('token', data.jwt);
+        localStorage.setItem('token', data);
         navigate('/blogs');
 
-        console.log(formData);
+        // console.log(formData);
     }
     catch(err){
-      console.log(err);
+      // console.log(err);
 
       alert('Error while signing up');
     }
@@ -56,13 +58,13 @@ export const Auth = ({type}: {type: "signup" | "signin"}) => {
               { 
                 type==="signup" ? 
                 <div className="mb-4">
-                <label className="block text-sm font-medium text-slate-400">Username</label>
+                <label className="block text-sm font-medium text-slate-400">name</label>
                 <input 
                   type="text" 
-                  name="username"
+                  name="name"
                   className="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
-                  placeholder='Enter your username'
-                  value={formData.username}
+                  placeholder='Enter your name'
+                  value={formData.name}
                   onChange={handleInputChange}
                 />
                 </div> : null 
