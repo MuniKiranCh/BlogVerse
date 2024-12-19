@@ -29,7 +29,7 @@ export const Auth = ({type}: {type: "signup" | "signin"}) => {
         const data = response.data;
         // console.log(data);
 
-        localStorage.setItem('token', data);
+        localStorage.setItem('token', data.jwt);
         navigate('/blogs');
 
         // console.log(formData);
@@ -54,7 +54,7 @@ export const Auth = ({type}: {type: "signup" | "signin"}) => {
           </div>
           <div className="text-base font-normal">
             {type === "signup" ? "Already have an account?" : "Don't have an account?"}
-            <Link to={type === "signup" ? "/signin" : "/"} className="text-blue-500"> {type === "signup" ? "Sign In" : "Sign Up"}</Link>
+            <Link to={type === "signup" ? "/signin" : "/signup"} className="text-blue-500"> {type === "signup" ? "Sign In" : "Sign Up"}</Link>
           </div>
           <div className="mt-4">
             <form onSubmit={handleFormSubmit}>
