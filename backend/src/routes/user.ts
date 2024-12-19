@@ -15,7 +15,7 @@ export const userRouter = new Hono<{
 
 userRouter.use('*', cors({
     origin: '*', // Allow requests from any origin
-    allowMethods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed HTTP methods
+    allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Specify allowed HTTP methods
     allowHeaders: ['Content-Type'], // Specify allowed headers
 }));
 

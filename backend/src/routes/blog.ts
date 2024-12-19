@@ -22,7 +22,7 @@ const createPrismaClient = (datasourceUrl: string) =>
 // Middleware for CORS
 blogRouter.use('*', cors({
     origin: '*', // Allow requests from your frontend
-    allowMethods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed HTTP methods
+    allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Specify allowed HTTP methods
     allowHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
 }));
 
