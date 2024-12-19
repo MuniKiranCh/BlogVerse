@@ -10,6 +10,7 @@ export interface Blog {
   author: {
     name: string;
   };
+  createdAt: string;
 }
 
 // Hook to fetch a single blog

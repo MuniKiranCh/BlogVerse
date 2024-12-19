@@ -32,7 +32,7 @@ export const Auth = ({type}: {type: "signup" | "signin"}) => {
         localStorage.setItem('token', data.jwt);
         navigate('/blogs');
 
-        // console.log(formData);
+        console.log(formData);
     }
     catch(err){
       // console.log(err);
