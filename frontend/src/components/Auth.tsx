@@ -46,12 +46,15 @@ export const Auth = ({type}: {type: "signup" | "signin"}) => {
     <div className='h-screen flex justify-center flex-col'>
       <div className="flex justify-center">
         <div className="max-w-lg">
-          <div className="text-center text-3xl font-bold">
+          <div>
+            <h1 className="text-4xl text-center font-extrabold pb-4">Welcome to BlogVerse!</h1>
+          </div>
+          <div className="text-3xl font-extrabold pb-2">
             {type === "signup" ? "Create an account" : "Login to your account"}
           </div>
-          <div className="text-center text-xl font-semibold">
+          <div className="text-base font-normal">
             {type === "signup" ? "Already have an account?" : "Don't have an account?"}
-            <Link to={type === "signup" ? "/signin" : "/signup"} className="text-blue-500"> {type === "signup" ? "Login" : "Sign Up"}</Link>
+            <Link to={type === "signup" ? "/signin" : "/"} className="text-blue-500"> {type === "signup" ? "Sign In" : "Sign Up"}</Link>
           </div>
           <div className="mt-4">
             <form onSubmit={handleFormSubmit}>

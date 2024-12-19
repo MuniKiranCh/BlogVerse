@@ -10,7 +10,7 @@ export const Appbar = () => {
         to="/blogs"
         className="flex flex-col justify-center cursor-pointer text-2xl font-bold"
       >
-        Medium
+        BlogVerse
       </Link>
 
       {/* Right-side elements: Publish button, Avatar, Logout */}

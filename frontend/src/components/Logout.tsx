@@ -5,7 +5,7 @@ export const Logout = () => {
 
   const logout = () => {
     // You can clear any session data here, for example:
-    // localStorage.removeItem("token");
+    localStorage.removeItem("token");
 
     // Redirecting the user to the home page (or sign-in page, if needed)
     navigate('/');
